@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.lordicon.com/lordicon-1.1.0.js"></script>
+
+    <link
+      rel="shortcut icon"
+      href="/images/android-chrome-192x192.png"
+      type="image/x-icon"
+    />
+    <title>Spotify by Abhishek.</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <!--       
+    <div style="width:300px; height: 300px; #02BE4D; top: 40%; left: 40%;position: absolute;" class="playmusic text-center">
+      <div class="playcontent"><img src="/poster/f67455c7980454dc92f352a7fc1049786cc63a6eposter" alt="">
+       <div class="playtext">
+        <h4>Heloh</h4>
+        <h5>helo</h5>
+       </div> -->
+
+    <div id="main">
+      <div class="left">
+        <img id="sptlogo" src="/images/Spotify-Logo.png" alt="" />
+
+        <button id="home">
+          <lord-icon
+            src="https://cdn.lordicon.com/teydnehw.json"
+            trigger="boomerang"
+            style="width: 30px; height: 30px"
+          >
+          </lord-icon>
+          <p>Home</p>
+        </button>
+        <a id="search" href="/search" id="search">
+          <lord-icon
+            src="https://cdn.lordicon.com/ybaojceo.json"
+            trigger="hover"
+            style="width: 30px; height: 30px"
+          >
+          </lord-icon>
+          <p>Search</p>
+        </a>
+        <i
+          onclick="showprev()"
+          style="margin-left: 20px; display: none"
+          class="ri-close-line"
+        ></i>
+        <a onclick="displayform()" class="plist" style="position: relative">
+          <div id="boxlist" class="boxlist">
+            <lord-icon
+              src="https://cdn.lordicon.com/arejbcfz.json"
+              trigger="hover"
+              style="width: 40px; height: 40px"
+            >
+            </lord-icon>
+            <p>Add Playlist</p>
+          </div>
+          <!-- <i   class="cross" style="position: absolute; top: 4%; right: 4%; font-size: 80px;" class="ri-close-line"></i> -->
+          <div style="display: none" class="pform">
+            <form action="/createPlaylist" method="post">
+              <label for="name">Playlist Name:</label>
+              <input type="text" name="name" id="name" required />
+              <button
+                style="
+                  background-color: rgb(45, 192, 62);
+                  height: 20px;
+                  margin-top: 20px;
+                  margin-bottom: 10px;
+                  border-radius: 50px;
+                "
+                type="submit"
+              >
+                <div
+                  id="boxx"
+                  style="
+                    width: 150px;
+                    height: 40px;
+                    background-color: #02be4d;
+                    border-radius: 50px;
+                    padding: 4px;
+                  "
+                >
+                  <h2>Create Playlist</h2>
+                </div>
+              </button>
+            </form>
+          </div>
+        </a>
+
+        <% currentUser.playlist.forEach(list=>{ %>
+        <div class="all-flex">
+          <a
+            id="plname1"
+            style="text-decoration: none"
+            href="/openplaylist/<%=list._id%>"
+          >
+            <h3 id="plname">🎧 <%=list.name%></h3>
+          </a>
+
+          <a href="/addsong/<%=list._id%>">
+            <lord-icon
+              class="addicon"
+              src="https://cdn.lordicon.com/zrkkrrpl.json"
+              trigger="hover"
+              colors="primary:#109173,secondary:#08a88a"
+              style="width: 30px; height: 30px"
+            >
+            </lord-icon>
+          </a>
+          <a href="/deleteplaylist/<%= list._id %>">
+            <lord-icon
+              src="https://cdn.lordicon.com/skkahier.json"
+              trigger="hover"
+              colors="primary:#00D856"
+              style="width: 30px; height: 30px"
+            >
+            </lord-icon>
+          </a>
+        </div>
+
+        <% }) %>
+
+        <a id="logout" href="/logout">
+          <lord-icon
+            src="https://cdn.lordicon.com/knjdvcob.json"
+            trigger="hover"
+            style="width: 40px; height: 40px"
+          >
+          </lord-icon>
+          <p>Logout</p>
+        </a>
+        <button id="logbtn">
+          <div id="acc">
+            <img src="<%=currentUser.profileImage%>" alt="" />
+            <%=currentUser.username%>
+          </div>
+        </button>
+      </div>
+      <div class="right">
+        <div class="musics">
+          <!-- Add the userLiked variable to your EJS template -->
+          <% currentUser.playlist[0].songs.forEach(song => { %>
+          <div
+            class="song"
+            onclick="songCardClicked('<%= song.fileName %>'),posterClick('<%= song.poster %>'),songClick('<%= song.fileName %>'),titleClick('<%= song.title %>'),artistClick('<%= song.artist %>')"
+          >
+            <img
+              onclick="posterClick('<%= song.poster %>') "
+              src="/poster/<%= song.poster %>"
+              alt=""
+            />
+            <div class="text">
+              <h5 id="titlesong"><%= song.title %></h5>
+              <p id="artistsong"><%= song.artist %></p>
+              <p><%= song.album %></p>
+            </div>
+            <div class="playButton">
+              <i class="ri-play-circle-fill"></i>
+            </div>
+            <a href="/like/<%= song._id %>" id="heart">
+              <% if (currentUser && currentUser.liked.includes(song._id)) { %>
+              <button>
+                <i
+                  style="color: red; font-size: 35px"
+                  class="ri-heart-fill"
+                ></i>
+              </button>
+              <% } else { %>
+              <button>
+                <i
+                  style="color: white; font-size: 35px"
+                  class="ri-heart-fill"
+                ></i>
+              </button>
+              <% } %>
+            </a>
+          </div>
+          <% }) %>
+        </div>
+
+        <!-- <div  style="position: absolute; width: 40px; height: 40px;" class="playmusic">
+          <div style="width: 40px; height: 40px;" class="playcontent"><img width: 40px; height: 40px; src="/poster/f802d625cd3d1c04652e37fc1cbb89eabadd4995poster" alt="">
+           <div class="playtextt">
+            <h5>Heloh</h5>
+            <p>helo</p>
+           </div> -->
+
+        <audio
+          src="/stream/2065347cdc4a6582c5318b6ab68c2dec0551a53c"
+          controls
+        ></audio>
+      </div>
+
+      <!-- <div  style="position: absolute; width: 40px; height: 40px;" class="playmusic">
+   <div style="width: 40px; height: 40px;" class="playcontent"><img width: 40px; height: 40px; src="/poster/f802d625cd3d1c04652e37fc1cbb89eabadd4995poster" alt="">
+    <div class="playtextt">
+     <h5>Heloh</h5>
+     <p>helo</p>
+    </div>
+  </div>
+</div> -->
+
+      <!-- <div class="content"> -->
+      <div class="playmusic">
+        <div class="playcontent">
+          <img
+            src="/poster/2065347cdc4a6582c5318b6ab68c2dec0551a53cposter"
+            alt=""
+          />
+        </div>
+        <div class="playtext">
+          <h3>title</h3>
+          <h4>artist</h4>
+        </div>
+      </div>
+
+      <div id="rect"></div>
+    </div>
+
+    <script>
+      // document.querySelectorAll('.song').forEach(songCard =>{
+      //   songCard.addEventListener('click',(eve) =>{
+      //     console.log('click');
+      //   })
+      // })
+
+      function hitting(songid) {
+        document.querySelector("#songhit").click();
+      }
+      function songCardClicked(filename) {
+        console.log(filename);
+        document
+          .querySelector("audio")
+          .setAttribute("src", `/stream/${filename}`);
+        document.querySelector("audio").play();
+      }
+
+      function displayform() {
+        document.querySelector(".boxlist").style.display = "none";
+        document.querySelector(".pform").style.display = "block";
+        document.querySelector(".ri-close-line").style.display = "block";
+        console.log("show me");
+      }
+
+      function showprev() {
+        document.querySelector(".boxlist").style.display = "block";
+        document.querySelector(".pform").style.display = "none";
+        document.querySelector(".ri-close-line").style.display = "none";
+        console.log("iluilu");
+      }
+
+      function songClick(filename) {
+        document
+          .querySelector("audio")
+          .setAttribute("src", `/stream/${filename}`);
+        document.querySelector("audio").play();
+        console.log(filename);
+        // document.getElementById("plays").classList.remove("ri-play-circle-fill");
+        // document.getElementById("plays").classList.add("ri-pause-circle-fill");
+        // document.querySelector('.playtext>h4').innerHTML=song;
+      }
+      function posterClick(poster) {
+        document
+          .querySelector(".playcontent>img")
+          .setAttribute("src", `/poster/${poster}`);
+        console.log(poster);
+      }
+      function artistClick(artist) {
+        document.querySelector(".playtext>h4").innerHTML = artist;
+        console.log("this is artist ==" + artist);
+      }
+      function titleClick(title) {
+        document.querySelector(".playtext>h3").innerHTML = title;
+        console.log(title);
+      }
+    </script>
+  </body>
+</html>

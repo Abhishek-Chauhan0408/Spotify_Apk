@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="/images/android-chrome-192x192.png"
+      type="image/x-icon"
+    />
+    <title>Spotify by Abhishek.</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- <h1>search</h1> -->
+    <div id="searchBox">
+      <i class="ri-search-2-line"></i>
+      <input
+        style="
+          width: 200px;
+          height: 50px;
+          border-radius: 50px;
+          margin-right: 10px;
+          padding: 20px;
+        "
+        type="text"
+        placeholder=" Search music"
+      />
+      <input
+        style="width: 100px; height: 30px; border-radius: 40px"
+        type="submit"
+        onclick="searchSong()"
+      />
+    </div>
+
+    <div class="right" style="width: 100%">
+      <div class="musics"></div>
+    </div>
+    <audio
+      src="/stream/2065347cdc4a6582c5318b6ab68c2dec0551a53c"
+      controls
+    ></audio>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.0/axios.min.js"
+      integrity="sha512-WrdC3CE9vf1nBf58JHepuWT4x24uTacky9fuzw2g/3L9JkihgwZ6Cfv+JGTtNyosOhEmttMtEZ6H3qJWfI7gIQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script>
+      // async function searchSong(){
+      //    const result=await axios.post('/search',{
+      //         search:document.querySelector('input').value
+      //     })
+      //     console.log(result)
+      //     let clutter=''
+      //     result.data.songs.forEach(song => {
+      //       clutter += `<div class="song" onclick="songCardClicked('${song.fileName}')">
+      //             <img src="/poster/ ${song.poster}" alt="">
+      //             <div class="text">
+      //               <h5>${song.title}</h5>
+      //               <p>${song.artist}</p>
+      //               <p>${song.album}</p>
+      //             </div>
+      //             <div class="playButton">
+      //               <i class="ri-play-circle-fill"></i>
+      //             </div>
+      //            </div>`
+      //     })
+
+      //     document.querySelector('.musics').innerHTML = clutter;
+      // }
+
+      async function searchSong() {
+        const result = await axios.post("/search", {
+          search: document.querySelector("input").value,
+        });
+
+        let clutter = "";
+
+        result.data.songs.forEach((song) => {
+          clutter += ` <div class="song" onclick="songCardClicked('${song.fileName}')">
+          <img src="/poster/${song.poster}" alt="">
+          <div class="text">
+            <h5>${song.title}</h5>
+            <p> ${song.artist}</p>
+            <p> ${song.album}</p>
+          </div>
+          <div class="playButton">
+            <i class="ri-play-circle-fill"></i>
+          </div>
+        </div>`;
+        });
+
+        document.querySelector(".musics").innerHTML = clutter;
+      }
+
+      function songCardClicked(filename) {
+        document
+          .querySelector("audio")
+          .setAttribute("src", `/stream/${filename}`);
+        document.querySelector("audio").play();
+      }
+    </script>
+  </body>
+</html>

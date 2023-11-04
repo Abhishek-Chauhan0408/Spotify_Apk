@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="shortcut icon"
+      href="/images/android-chrome-192x192.png"
+      type="image/x-icon"
+    />
+    <!-- <link rel="shortcut icon" href="/images/android-chrome-192x192.png" type="image/x-icon"> -->
+    <title>Spotify by Abhishek.</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+  </head>
+  <body>
+    <div id="main">
+      <div class="left">
+        <img id="sptlogo" src="/images/Spotify-Logo.png" alt="" />
+        <a id="home" href="/">
+          <i class="ri-home-4-line"></i>
+          <p>Home</p>
+        </a>
+        <a id="search" href="/search">
+          <i class="ri-search-2-line"></i>
+          <p>Search</p>
+        </a>
+        <i
+          onclick="showprev()"
+          style="margin-left: 20px; display: none"
+          class="ri-close-line"
+        ></i>
+        <a onclick="displayform()" class="plist" style="position: relative">
+          <div id="boxlist">
+            <i style="display: contents" class="ri-play-list-line"></i>
+            <p>Current Playlist</p>
+          </div>
+          <!-- <i   class="cross" style="position: absolute; top: 4%; right: 4%; font-size: 80px;" class="ri-close-line"></i> -->
+          <div style="display: none" class="pform">
+            <form action="/createPlaylist" method="post">
+              <label for="name">Playlist Name:</label>
+              <input type="text" name="name" id="name" required />
+              <label for="poster">Playlist Poster (optional):</label>
+              <input type="text" name="poster" id="poster" />
+              <button
+                style="
+                  background-color: rgb(45, 192, 62);
+                  height: 20px;
+                  margin-top: 20px;
+                  margin-bottom: 10px;
+                  border-radius: 50px;
+                "
+                type="submit"
+              >
+                Create Playlist
+              </button>
+            </form>
+          </div>
+        </a>
+        <button class="all-flex"><%= currplaylist.name %></button>
+        <a id="logout" href="/logout">
+          <i class="ri-logout-box-line"></i>
+          <p>Logout</p>
+        </a>
+        <button id="logbtn">
+          <div id="acc">
+            <img src="<%=currentUser.profileImage%>" alt="" />
+            <%=currentUser.username%>
+          </div>
+        </button>
+      </div>
+      <div class="right">
+        <div class="musics">
+          <% allSongs.forEach(song => { %>
+          <div class="song" onclick="songCardClicked('<%= song.fileName %>')">
+            <div id="overlay">
+              <a href="/insertsong/<%= currplaylist._id %>/<%= song._id %>">
+                <button id="songbtn"><h3>Add to Playlist</h3></button>
+              </a>
+            </div>
+            <img src="/poster/<%= song.poster %>" alt="" />
+            <div class="text">
+              <h5><%= song.title %></h5>
+              <p><%= song.artist %></p>
+              <p><%= song.album %></p>
+            </div>
+            <div class="playButton">
+              <i class="ri-play-circle-fill"></i>
+            </div>
+            <a href="/like/<%= song._id %>" id="heart">
+              <% if (currentUser && currentUser.liked.includes(song._id)) { %>
+              <button>
+                <i
+                  style="color: red; font-size: 35px"
+                  class="ri-heart-fill"
+                ></i>
+              </button>
+              <% } else { %>
+              <button>
+                <i
+                  style="color: white; font-size: 35px"
+                  class="ri-heart-fill"
+                ></i>
+              </button>
+              <% } %>
+            </a>
+          </div>
+          <% }) %>
+        </div>
+
+        <audio
+          src="/stream/2065347cdc4a6582c5318b6ab68c2dec0551a53c"
+          controls
+        ></audio>
+      </div>
+    </div>
+  </body>
+</html>

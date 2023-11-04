@@ -1,0 +1,376 @@
+* {
+  margin: 0%;
+  padding: 0%;
+  box-sizing: border-box;
+  font-family: gilroy;
+  color: white;
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+}
+
+#main {
+  height: max-content;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  gap: 5px;
+  position: relative;
+  background-color: #000000;
+  overflow: hidden;
+}
+#sptlogo {
+  margin-left: 30px;
+  width: 100%;
+  align-items: center;
+  width: 170px;
+  height: 100px;
+}
+.left {
+  /* position: fixed; */
+  left: 0%;
+  top: 0%;
+  position: relative;
+  max-height: max-content;
+  /* height: 100vh; */
+  width: 20%;
+  background-color: #121212;
+  /* overflow-y: scroll; */
+  /* overflow: hidden; */
+  /* overflow: auto; */
+  overflow-y: scroll; /* Hide the scrollbar */
+
+  scrollbar-color: #0000;
+}
+
+.left::-webkit-scrollbar {
+  width: 0; /* Hide the scrollbar */
+}
+
+/* .left button,a {
+     
+     text-decoration: none;
+      align-items: center;
+      padding: 20px 40px;
+      gap: 10px;
+      display: flex;
+      font-size: 20px;
+      background-color: #121212;
+      color: aliceblue;
+      outline: none;
+      border: none;
+     width: 100%;
+      cursor: pointer;
+      
+   } */
+#home,
+#search,
+#boxlist,
+#logout,
+#logbtn {
+  text-decoration: none;
+  align-items: center;
+  padding: 20px 40px;
+  gap: 10px;
+  display: flex;
+  font-size: 20px;
+  background-color: #121212;
+  color: aliceblue;
+  outline: none;
+  border: none;
+  width: 100%;
+  cursor: pointer;
+}
+#home:hover,
+#search:hover,
+#boxlist:hover,
+#logout:hover,
+#logbtn:hover {
+  background-color: #312c2c;
+}
+/* #search {
+  text-decoration: none;
+  align-items: center;
+  padding: 20px 40px;
+  gap: 10px;
+  display: flex;
+  font-size: 20px;
+  background-color: #121212;
+  color: aliceblue;
+  outline: none;
+  border: none;
+  width: 100%;
+  cursor: pointer;
+}
+#boxlist {
+  text-decoration: none;
+  align-items: center;
+  padding: 20px 40px;
+  gap: 10px;
+  display: flex;
+  font-size: 20px;
+  background-color: #121212;
+  color: aliceblue;
+  outline: none;
+  border: none;
+  width: 100%;
+  cursor: pointer;
+}
+#logout {
+  text-decoration: none;
+  align-items: center;
+  padding: 20px 40px;
+  gap: 10px;
+  display: flex;
+  font-size: 20px;
+  background-color: #121212;
+  color: aliceblue;
+  outline: none;
+  border: none;
+  width: 100%;
+  cursor: pointer;
+}
+  */
+.all-flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  align-items: center;
+  padding: 20px 40px;
+  gap: 10px;
+  display: flex;
+  font-size: 20px;
+  background-color: #121212;
+  color: aliceblue;
+  outline: none;
+  border: none;
+  width: 100%;
+  cursor: pointer;
+}
+/* #logbtn {
+  text-decoration: none;
+  align-items: center;
+  padding: 20px 40px;
+  gap: 10px;
+  display: flex;
+  font-size: 20px;
+  background-color: #121212;
+  color: aliceblue;
+  outline: none;
+  border: none;
+  width: 100%;
+  cursor: pointer;
+} */
+
+.left button:hover,
+.left a:hover {
+  background-color: #1d1a1a;
+}
+.right {
+  padding: 20px;
+  /* position: relative; */
+  /* overflow: hidden; */
+  display: flex;
+  flex-wrap: wrap;
+  height: 100vh;
+  width: 80%;
+  background-color: #121212;
+  /* height: fit-content; */
+  /* align-items: start; */
+  overflow-y: scroll;
+}
+.right .musics {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+.song {
+  /* height: fit-content; */
+  position: relative;
+  background-color: #252525;
+  width: fit-content;
+  padding: 7px;
+  border-radius: 7px;
+  margin: 7px;
+  align-self: flex-start;
+  transition: all ease 1s;
+}
+.song:hover #overlay {
+  display: block;
+  transition: all ease 1s;
+}
+#overlay {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  /* transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 1s; */
+  transition: all ease 1s;
+  background-color: #080808a2;
+}
+#songbtn {
+  text-decoration: none;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  z-index: 99;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.song .text h5,
+p {
+  max-width: 150px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.song img {
+  width: 100%;
+  object-fit: cover;
+}
+.song .playButton {
+  position: absolute;
+  top: 60%;
+  left: 80%;
+  transform: translate(-50%, -50%);
+}
+
+.playButton i {
+  color: rgb(7, 142, 7);
+  font-size: 40px;
+}
+
+input {
+  color: #000000;
+}
+
+#searchBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  height: 100px;
+  background-color: #231e1e;
+}
+
+#acc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* position: absolute; */
+  top: 50%;
+  left: 10%;
+  border-color: aqua;
+}
+#acc img {
+  /* position: fixed; */
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  margin-right: 20px;
+  border-color: 6px solid green;
+}
+#heart i {
+  position: absolute;
+  /* font-size: 30px; */
+  /* width: 80px;
+    height: 80px;
+    border-radius: 50%; */
+  bottom: 7%;
+  right: 5%;
+  /* background-color: aqua; */
+  /* opacity: 0; */
+  transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s;
+}
+#heartColor {
+  font-size: 30px;
+}
+
+#songbtn {
+  padding: 5px;
+  width: 140px;
+  height: 50px;
+  background-color: #00d856;
+  border-radius: 50px;
+  border: none;
+  outline: none;
+  margin: 4px;
+}
+#songbtn h3 {
+  color: #000000;
+}
+
+#plname:hover {
+  color: rgb(30, 181, 30);
+}
+
+#audiobox {
+  position: fixed;
+  width: 100%;
+  top: 84%;
+  height: 130px;
+  /* position: absolute; */
+  z-index: 99999;
+  background-color: #282b2969;
+}
+
+audio {
+  z-index: 999;
+  position: fixed;
+  bottom: 0px;
+  transform: translate(-50%, -50%);
+  left: 60%;
+  width: 600px;
+  height: 60px;
+  opacity: 0.5;
+  /* background-color: #00D856; */
+  /* background-color: rgb(83, 237, 5) 29, 27); */
+  /* top: 50%; */
+}
+
+.playcontent img {
+  width: 130px;
+  height: 100px;
+}
+.playmusic {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* position: absolute; */
+  position: fixed;
+  gap: 180px;
+  z-index: 99;
+  top: 80%;
+  left: 10%;
+}
+.playtext {
+  margin-top: 40px;
+}
+.content {
+  /* position: absolute; */
+  position: relative;
+  width: 40%;
+  height: 100px;
+  background-color: aquamarine;
+  /* position: relative; */
+}
+.playcontent img {
+  position: fixed;
+  margin-left: 20px;
+  /* display: flex; */
+}
+
+#rect {
+  width: 100%;
+  height: 120px;
+  position: fixed;
+  /* position: relative; */
+  top: 85%;
+  background-color: #1d1a1ad3;
+}

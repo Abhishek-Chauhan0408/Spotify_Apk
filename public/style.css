@@ -1,0 +1,399 @@
+ *{
+margin:0%;
+padding:0%;
+box-sizing:border-box;
+font-family: gilroy;
+color: white;
+ }
+ 
+   html,body{
+  width:100%;
+  height:100%;
+  background-color: #000000;
+   }
+  
+   #main{
+      height: max-content;
+      width: 100%;
+      display: flex;
+      gap: 5px;
+      position: relative;
+      background-color: #000000 ;
+   }
+   #sptlogo{
+     margin-left: 30px;
+     width: 100%;
+     align-items: center;
+     width: 170px;
+     height: 100px;
+   }
+   .left{
+     /* position: fixed; */
+     left: 0%;
+     top: 0%;
+     position: relative;
+      max-height:inherit;
+      width: 20%;
+      background-color: #121212;
+   }
+   .left button,.left a {
+  
+     text-decoration: none;
+      align-items: center;
+      padding: 20px 40px;
+      gap: 10px;
+      display: flex;
+      font-size: 20px;
+      background-color: #121212;
+      color: aliceblue;
+      outline: none;
+      border: none;
+      width: 100%;
+      cursor: pointer;
+   }
+   .left button:hover,.left a:hover{
+      background-color: #1d1a1a;
+   }
+   .right{
+     padding: 20px;
+     position: relative;
+     /* overflow: hidden; */
+      display: flex;
+      flex-wrap: wrap;
+      height: max-content;
+      width: 80%;
+      background-color: #121212;
+      /* height: fit-content; */
+      /* align-items: start; */
+  }
+  .right .musics{
+     
+     width: 100%;
+     display: grid;
+     grid-template-columns: repeat(auto-fill,minmax(200px,1fr));
+  }
+  .song{
+       /* height: fit-content; */
+      position: relative;
+      background-color: #252525;
+      width: fit-content;
+      padding: 7px;
+      border-radius: 7px;
+      margin: 7px;
+      align-self: flex-start;
+  
+   }
+   .song .text h5,p{
+      max-width: 150px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+   }
+   .song img{
+      width: 100%;
+      object-fit: cover;
+  
+   }
+   .song .playButton{
+      position: absolute;
+      top: 60%;
+      left:80%;
+      transform: translate(-50%,-50%);
+   }
+  
+    .playButton i{
+      color: rgb(7, 142, 7);
+      font-size: 40px;
+   }
+  
+   audio{
+     position: fixed;
+     bottom: 0px;
+     transform: translate(-50%,-50%);
+     left: 60%;
+     width: 600px;
+     height: 60px;
+     /* top: 50%; */
+   }
+  
+   input {
+     color: #000000;
+   }
+  
+   #searchBox{
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     position: relative;
+     width: 100%;
+     height: 100px;
+     background-color: #231e1e;
+   }
+  
+   #acc{
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     /* position: absolute; */
+     top: 50%;
+     left: 10%;
+     border-color: aqua;
+   }
+   #acc img{
+     /* position: fixed; */
+     width: 70px;
+     height: 70px;
+     border-radius: 50%;
+     margin-right: 20px;
+     border-color: 6px solid green;
+   }
+   #heart i{
+    position: absolute;
+    /* font-size: 30px; */
+    /* width: 80px;
+    height: 80px;
+    border-radius: 50%; */
+    bottom: 7%;
+    right: 5%;
+    /* background-color: aqua; */
+    /* opacity: 0; */
+    transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) .4s;
+   }
+   #heartColor{
+    font-size: 30px;
+   }
+  
+  .playlistColms{
+    display: flex;
+    flex-direction: column;
+    /* align-items: start; */
+    gap: 0px;
+    line-height: 0;
+  }
+   
+  .boxlist{
+    display: flex;
+    justify-content: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  
+  .playlistColms{
+    /* height: 30px; */
+    background-color: aqua;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 0px;
+    line-height: 0;
+  }
+
+  #container a{
+    padding: 20px 90px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+  }
+height:100%;
+ }
+
+ #main{
+    height: max-content;
+    width: 100%;
+    display: flex;
+    gap: 5px;
+    position: relative;
+    background-color: #000000 ;
+ }
+ #sptlogo{
+   margin-left: 30px;
+   width: 100%;
+   align-items: center;
+   width: 170px;
+   height: 100px;
+ }
+ .left{
+   /* position: fixed; */
+   left: 0%;
+   top: 0%;
+   position: relative;
+    max-height: max-content;
+    width: 20%;
+    background-color: #121212;
+ }
+ /* .left button,.left a {
+
+   text-decoration: none;
+    align-items: center;
+    padding: 30px 32px;
+    gap: 15px;
+    display: flex;
+    font-size: 20px;
+    background-color: #121212;
+    color: aliceblue;
+    outline: none;
+    border: none;
+    width: 100%;
+    cursor: pointer;
+ }
+ .left button:hover,.left a:hover{
+    background-color: #1d1a1a;
+ } */
+ #home ,#search,#boxlist,#logout,#logbtn{
+  text-decoration: none;
+  align-items: center;
+  padding: 20px 40px;
+  gap: 10px;
+  display: flex;
+  font-size: 20px;
+  background-color: #121212;
+  color: aliceblue;
+  outline: none;
+  border: none;
+  width: 100%;
+  cursor: pointer;
+}
+#home:hover ,#search:hover,#boxlist:hover,#logout:hover,#logbtn:hover{
+  background-color: #312c2c;
+}
+ .right{
+   padding: 20px;
+   position: relative;
+   /* overflow: hidden; */
+    display: flex;
+    flex-wrap: wrap;
+    height: max-content;
+    width: 80%;
+    background-color: #121212;
+    /* height: fit-content; */
+    /* align-items: start; */
+}
+.right .musics{
+   
+   width: 100%;
+   display: grid;
+   grid-template-columns: repeat(auto-fill,minmax(200px,1fr));
+}
+.song{
+     /* height: fit-content; */
+    position: relative;
+    background-color: #252525;
+    width: fit-content;
+    padding: 7px;
+    border-radius: 7px;
+    margin: 7px;
+    align-self: flex-start;
+
+ }
+ .song .text h5,p{
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+ }
+ .song img{
+    width: 100%;
+    object-fit: cover;
+
+ }
+ .song .playButton{
+    position: absolute;
+    top: 60%;
+    left:80%;
+    transform: translate(-50%,-50%);
+ }
+
+  .playButton i{
+    color: rgb(7, 142, 7);
+    font-size: 40px;
+ }
+
+ audio{
+   position: fixed;
+   bottom: 0px;
+   transform: translate(-50%,-50%);
+   left: 60%;
+   width: 600px;
+   height: 60px;
+   /* top: 50%; */
+ }
+
+ input {
+   color: #000000;
+ }
+
+ #searchBox{
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   position: relative;
+   width: 100%;
+   height: 100px;
+   background-color: #231e1e;
+ }
+
+ #acc{
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   /* position: absolute; */
+   top: 50%;
+   left: 10%;
+   border-color: aqua;
+ }
+ #acc img{
+   /* position: fixed; */
+   width: 70px;
+   height: 70px;
+   border-radius: 50%;
+   margin-right: 20px;
+   border-color: 6px solid green;
+ }
+ #heart i{
+  position: absolute;
+  /* font-size: 30px; */
+  /* width: 80px;
+  height: 80px;
+  border-radius: 50%; */
+  bottom: 7%;
+  right: 5%;
+  /* background-color: aqua; */
+  /* opacity: 0; */
+  transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) .4s;
+ }
+ #heartColor{
+  font-size: 30px;
+ }
+
+.playlistColms{
+  /* height: 30px; */
+  background-color: aqua;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 0px;
+  line-height: 0;
+}
+
+.boxlist{
+  display: flex;
+  
+}
+
+
+.listing{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#audiobox{
+  width: 100%;
+  height: 100px;
+  position: absolute;
+  background-color: #e81010;
+}
+ 
