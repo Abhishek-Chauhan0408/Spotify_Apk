@@ -18,13 +18,7 @@
     <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
   <body>
-    <!--       
-    <div style="width:300px; height: 300px; #02BE4D; top: 40%; left: 40%;position: absolute;" class="playmusic text-center">
-      <div class="playcontent"><img src="/poster/f67455c7980454dc92f352a7fc1049786cc63a6eposter" alt="">
-       <div class="playtext">
-        <h4>Heloh</h4>
-        <h5>helo</h5>
-       </div> -->
+    
 
     <div id="main">
       <div class="left">
@@ -186,29 +180,14 @@
           <% }) %>
         </div>
 
-        <!-- <div  style="position: absolute; width: 40px; height: 40px;" class="playmusic">
-          <div style="width: 40px; height: 40px;" class="playcontent"><img width: 40px; height: 40px; src="/poster/f802d625cd3d1c04652e37fc1cbb89eabadd4995poster" alt="">
-           <div class="playtextt">
-            <h5>Heloh</h5>
-            <p>helo</p>
-           </div> -->
-
+        
         <audio
           src="/stream/2065347cdc4a6582c5318b6ab68c2dec0551a53c"
           controls
         ></audio>
       </div>
 
-      <!-- <div  style="position: absolute; width: 40px; height: 40px;" class="playmusic">
-   <div style="width: 40px; height: 40px;" class="playcontent"><img width: 40px; height: 40px; src="/poster/f802d625cd3d1c04652e37fc1cbb89eabadd4995poster" alt="">
-    <div class="playtextt">
-     <h5>Heloh</h5>
-     <p>helo</p>
-    </div>
-  </div>
-</div> -->
-
-      <!-- <div class="content"> -->
+       
       <div class="playmusic">
         <div class="playcontent">
           <img
@@ -226,12 +205,7 @@
     </div>
 
     <script>
-      // document.querySelectorAll('.song').forEach(songCard =>{
-      //   songCard.addEventListener('click',(eve) =>{
-      //     console.log('click');
-      //   })
-      // })
-
+    
       function hitting(songid) {
         document.querySelector("#songhit").click();
       }
@@ -263,9 +237,7 @@
           .setAttribute("src", `/stream/${filename}`);
         document.querySelector("audio").play();
         console.log(filename);
-        // document.getElementById("plays").classList.remove("ri-play-circle-fill");
-        // document.getElementById("plays").classList.add("ri-pause-circle-fill");
-        // document.querySelector('.playtext>h4').innerHTML=song;
+        
       }
       function posterClick(poster) {
         document

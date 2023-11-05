@@ -7,7 +7,7 @@ const crypto = require("crypto");
 
 const mongoose = require("mongoose");
 mongoose
-  .connect("mongodb://0.0.0.0/spotify-n15")
+  .connect("mongodb+srv://0111cs211006abhishek:YzCAEWs8RgohGu00@cluster0.mxwua50.mongodb.net/spotify-n15")
   .then(() => {
     console.log("connected to DB");
   })
@@ -63,18 +63,14 @@ router.post("/register", async function (req, res, next) {
 
         console.log(req.body);
 
-        //  const newUser= users.findOne({
-        //   _id: req.user._id
-        //  })
+       
 
         newUser.playlist.push(defaultPlaylist._id);
         await newUser.save();
 
         console.log(req.user);
 
-        // JSON.stringify(currentUser) is use to show all the model connected with populated in object
-        //  console.log(JSON.stringify(currentUser))
-
+       
         res.redirect("/");
       });
     })
@@ -188,7 +184,7 @@ router.post(
         });
       })
     );
-    // do from here 3333 34:00 se chalu krna hai=======
+    
 
     res.send("songs upload");
   }
@@ -307,7 +303,7 @@ router.get("/addsong/:id", async (req, res, next) => {
   console.log(allSongs);
   //  console.log(` this is current playlist---+${currplaylist} and the  current user is --${currentUser}`);
   res.render("playlist", { allSongs, currplaylist, currentUser });
-  // res.send(allSongs);
+   
 });
 
 // Handle the delete playlist request
